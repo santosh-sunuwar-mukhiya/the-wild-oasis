@@ -31,11 +31,13 @@ const TableHeader = styled.header`
 export default function CabinTable(){
     // Queries
     const {isLoading, data:cabins, error} = useQuery({
-        queryKey: ['cabin'],
+        queryKey: ['cabins'],
         queryFn: getCabins,
     });
 
     if(isLoading) return <Spinner />;
+
+    if (error) return <p>{error}</p>;
 
     return (
         <Table role="table">
